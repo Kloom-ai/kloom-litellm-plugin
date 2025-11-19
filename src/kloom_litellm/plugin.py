@@ -259,7 +259,7 @@ class KloomPlugin(CustomLogger):
             project_id = self.kloom_project_id if router_id is None else None
 
             # Extract exception info
-            exception = kwargs.get("exception")
+            # exception = kwargs.get("exception")
 
             request_data = {
                 "router_id": router_id,

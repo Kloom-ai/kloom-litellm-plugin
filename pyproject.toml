@@ -1,11 +1,57 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = ""
+name = "kloom-litellm"
 version = "0.0.1"
-requires-python = "~=3.13"
-dependencies = [
-    "kloom_litellm",
-    "litellm>=1.79.3",
+description = "A LiteLLM plugin for intelligent model routing and request tracking with Kloom"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Kloom", email = "support@kloom.ai" }
 ]
+maintainers = [
+    { name = "Kloom", email = "support@kloom.ai" }
+]
+keywords = [
+    "litellm",
+    "llm",
+    "ai",
+    "kloom",
+    "model-routing",
+    "observability",
+    "logging",
+    "openai",
+    "anthropic",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "litellm>=1.79.3",
+    "httpx>=0.27.0",
+]
+
+[project.urls]
+Homepage = "https://kloom.ai"
+Documentation = "https://docs.kloom.ai/quickstart/litellm"
+Repository = "https://github.com/kloom-ai/kloom-litellm-plugin"
+Issues = "https://github.com/kloom-ai/kloom-litellm-plugin/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [dependency-groups]
 dev = [
@@ -13,20 +59,8 @@ dev = [
     "mypy",
     "pytest",
     "pytest-cov",
-    "playwright>=1.56.0",
-    "pytest-asyncio>=1.3.0",
 ]
 
 [tool.ruff]
 line-length = 88
 lint.extend-select = ["I"]
-
-[tool.uv]
-package = false
-
-[[tool.uv.index]]
-name = "pypi"
-url = "https://pypi.org/simple"
-
-[tool.uv.sources]
-kloom_litellm = { path = "kloom_litellm", editable = true }
