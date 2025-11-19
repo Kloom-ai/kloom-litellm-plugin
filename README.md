@@ -45,7 +45,7 @@ Visit: **[https://docs.kloom.ai/quickstart/litellm](https://docs.kloom.ai/quicks
 
 ## Development
 
-### From Source
+### Installation from Source
 
 ```bash
 uv sync
