@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kloom-litellm"
-version = "0.0.1"
+version = "0.0.1.post1"
 description = "A LiteLLM plugin for intelligent model routing and request tracking with Kloom"
 readme = "README.md"
 requires-python = ">=3.9"
