@@ -13,7 +13,7 @@ litellm.callbacks = [kloom_logger]
 async def test():
     # Make a completion - it will auto-log to Kloom
     response = await litellm.acompletion(
-        model="gpt-3.5-turbo",
+        model="gpt-5",
         messages=[{"role": "user", "content": "Hello!"}],
         api_key=os.getenv("OPENAI_API_KEY"),
     )

@@ -28,7 +28,7 @@ litellm.callbacks = [kloom_logger]
 
 # Use LiteLLM as normal - requests will automatically be tracked
 response = litellm.completion(
-    model="gpt-3.5-turbo",
+    model="gpt-5",
     messages=[{"role": "user", "content": "Hello!"}]
 )
 ```
@@ -36,6 +36,7 @@ response = litellm.completion(
 ## Documentation
 
 For complete documentation, including:
+
 - LiteLLM Proxy setup for model routing
 - Configuration options
 - Advanced usage examples
