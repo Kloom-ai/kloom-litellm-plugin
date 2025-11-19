@@ -6,6 +6,7 @@ import litellm
 from litellm.caching.dual_cache import DualCache
 from litellm.integrations.custom_logger import CustomLogger
 from litellm.proxy._types import UserAPIKeyAuth
+from litellm.utils import get_llm_provider
 
 
 # Define your plugin class, inheriting from CustomLogger
@@ -169,12 +170,26 @@ class KloomPlugin(CustomLogger):
             router_id = metadata.get("kloom_router_id", None)
             project_id = self.kloom_project_id if router_id is None else None
 
+            try:
+                model, litellm_model_provider, _, _ = get_llm_provider(
+                    kwargs.get("model", "unknown")
+                )
+                invoked_model_name = {
+                    "type": "litellm",
+                    "slug": f"{litellm_model_provider}/{model}",
+                }
+            except Exception:
+                invoked_model_name = None
+
             # Extract data from LiteLLM response
             request_data = {
                 "router_id": router_id,
                 "project_id": project_id,
-                "model_name": kwargs.get("model", "unknown"),
-                "invoked_model_name": response_obj.get("model"),
+                "model_name": kwargs.get("metadata", {}).get(
+                    "kloom_original_model", kwargs.get("model", "unknown")
+                ),
+                "invoked_model_name": invoked_model_name,
+                "provider_returned_model": response_obj.get("model"),
                 "request_payload": {
                     "model": kwargs.get("model"),
                     "messages": kwargs.get("messages", []),
